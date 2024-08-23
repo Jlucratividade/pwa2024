@@ -1,7 +1,8 @@
 {
     "short_name": "shorName PWA",
     "name": "nomeMesmo do PWA",
-    "start_url": ".",
+    "id": "/pwa2024/",
+    "start_url": "/pwa2024/",
     "display": "standalone",
     "theme_color": "#ffffff",
     "background_color": "#000000",
