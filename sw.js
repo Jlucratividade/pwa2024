@@ -1,4 +1,4 @@
-const cacheName = 'portfolio-v1'; // Adicionado versionamento
+const cacheName = 'portfolio-v2'; // Adicionado versionamento
 
 // Evento de instalação do service worker
 self.addEventListener('install', function(event){
@@ -6,7 +6,7 @@ self.addEventListener('install', function(event){
         caches.open(cacheName).then(function (cache){
             return cache.addAll([
                 './',
-                './sobre.html',
+                './index.html',
                 './manifest.webmanifest',
                 './index.js'
             ]);
