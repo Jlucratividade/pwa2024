@@ -84,6 +84,45 @@
 </head>
 
 <body>
+
+    <button id="notifyBtn">Show Notification</button>
+    <script>
+    // app.js    
+    // Solicitar permissão para mostrar notificações
+    document.addEventListener('DOMContentLoaded', () => {
+      const notifyBtn = document.getElementById('notifyBtn');
+    
+      notifyBtn.addEventListener('click', () => {
+        // Verificar se as notificações são suportadas
+        if ('Notification' in window) {
+          // Solicitar permissão para notificações
+          Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+              // Verificar se o Service Worker está registrado
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.ready.then(registration => {
+                  // Enviar a notificação
+                  registration.showNotification('Hello!', {
+                    body: 'This is a notification from your PWA.',
+                    icon: '/images/notification-icon.png' // Substitua pelo caminho do seu ícone
+                  });
+                });
+              } else {
+                console.error('Service Worker não está suportado.');
+              }
+            } else {
+              console.error('Permissão para notificações negada.');
+            }
+          }).catch(error => {
+            console.error('Erro ao solicitar permissão para notificações:', error);
+          });
+        } else {
+          console.error('Notificações não são suportadas pelo navegador.');
+        }
+      });
+    });    
+    </script>
+
     <div id="app">
         <header>
             <button class="button" onclick="showPage('home')">Home</button>
