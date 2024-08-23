@@ -1,0 +1,38 @@
+{
+    "short_name": "shorName PWA",
+    "name": "nomeMesmo do PWA",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "theme-color": "#ffffff",
+    "background_color": "#000000",
+    "background-color": "#000000",
+    "description": "my site description",
+    "icons": [
+      {
+      "src": "icon-512-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+      },
+      {
+      "src": "icon-192-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+      },
+      {
+      "src": "icon-180-180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+      },
+      {
+      "src": "icon-167-167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+      },
+      {
+      "src": "icon-152-152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+      }
+    ]
+  }
