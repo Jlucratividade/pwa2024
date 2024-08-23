@@ -8,12 +8,27 @@
   "description": "Um simples PWA que diz Olá, Mundo!",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "icons/icon-152-152.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "icons/icon-167-167.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-180-180.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
