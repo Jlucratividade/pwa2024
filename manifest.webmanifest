@@ -4,9 +4,7 @@
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#ffffff",
-    "theme-color": "#ffffff",
     "background_color": "#000000",
-    "background-color": "#000000",
     "description": "my site description",
     "icons": [
       {
@@ -34,5 +32,19 @@
       "type": "image/png",
       "sizes": "152x152"
       }
-    ]
+    ],
+    "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
   }
