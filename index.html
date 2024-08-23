@@ -9,9 +9,74 @@
     <title>Olá, Mundo!</title>
 
 
-    <style>
+<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        main {
+            flex: 1;
+            padding: 10px;
+        }
+        .item, .cart-item {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .imagem {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-size: cover;
+            background-position: center;
+        }
+        .informacoes {
+            margin-left: 10px;
+        }
+        .button {
+            margin: 5px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-controls button {
+            margin: 0 5px;
+            padding: 5px;
+            background: #ddd;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .quantity-controls button:hover {
+            background: #ccc;
+        }
+        .cart {
             display: flex;
             flex-direction: column;
         }
