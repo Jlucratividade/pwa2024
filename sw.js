@@ -62,3 +62,23 @@ async function networkAndCache(req) {
         return cachedResponse || new Response('Offline', { status: 503, statusText: 'Offline' });
     }
 }
+
+
+
+
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  // Opcional: abrir uma página específica ou realizar outra ação
+});
+
+self.addEventListener('push', (event) => {
+  const options = {
+    body: 'Você recebeu uma nova mensagem!',
+    icon: '/notification-icon.png',
+    badge: '/notification-badge.png'
+  };
+  event.waitUntil(
+    self.registration.showNotification('Nova Notificação!', options)
+  );
+});
