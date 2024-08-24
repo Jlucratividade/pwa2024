@@ -1,36 +1,51 @@
 {
-  "name": "Olá, Mundo!",
-  "short_name": "OláMundo",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "description": "Um simples PWA que diz Olá, Mundo!",
-  "icons": [
+    "short_name": "shorName PWA",
+    "name": "nomeMesmo do PWA",
+    "id": "/pwa2024/",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#000000",
+    "description": "my site description",
+    "icons": [
+      {
+      "src": "icon-512-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+      },
+      {
+      "src": "icon-192-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+      },
+      {
+      "src": "icon-180-180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+      },
+      {
+      "src": "icon-167-167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+      },
+      {
+      "src": "icon-152-152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+      }
+    ],
+    "screenshots": [
     {
-      "src": "icons/icon-152-152.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
     },
     {
-      "src": "icons/icon-167-167.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-180-180.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-192-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "screenshot-narrow.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
-}
+  }
