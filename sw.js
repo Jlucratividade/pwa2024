@@ -7,7 +7,8 @@ self.addEventListener('install', function(event){
             return cache.addAll([
                 './',
                 './manifest.webmanifest',
-                './index.js'
+                './index.js',
+                './nossoChat.html'
             ]);
         })
     );
