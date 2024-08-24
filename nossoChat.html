@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Chat</title>
+    <script src="mqttws31.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 12px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .message.sent {
+            background-color: #1abc9c;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.received {
+            background-color: #ffffff;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        .message-time {
+            font-size: 12px;
+            color: #aaa;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-right: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input button:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+            <!-- Mensagens serão adicionadas aqui -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Digite uma mensagem..." />
+            <button onclick="sendMessage(input.value.trim())">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+            const input = document.getElementById('messageInput');
+            //let mensagem = input.value.trim()
+
+        function sendMessage(mensagem) {
+            const messagesContainer = document.getElementById('chatMessages');
+
+            if (mensagem === '') {
+                return; // Não enviar mensagens vazias
+            }
+
+            // Cria um novo balão de mensagem
+            const message = document.createElement('div');
+            message.classList.add('message', 'sent');
+            //message.textContent = input.value;
+            message.textContent = mensagem;
+
+            // Adiciona a hora da mensagem
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('message-time');
+            timeElement.textContent = time;
+            message.appendChild(timeElement);
+            publish(mensagem)
+
+            // Adiciona a mensagem ao contêiner de mensagens
+            messagesContainer.appendChild(message);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Limpa o campo de entrada
+            input.value = '';
+            input.focus();
+        }
+
+        // Adiciona uma mensagem de exemplo quando a página é carregada
+        document.addEventListener('DOMContentLoaded', () => {
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            // Mensagem de exemplo recebida
+            const exampleMessage = document.createElement('div');
+            exampleMessage.classList.add('message', 'received');
+            exampleMessage.textContent = 'Olá! Como posso ajudar você?';
+            
+            // Adiciona a hora da mensagem
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('message-time');
+            timeElement.textContent = time;
+            exampleMessage.appendChild(timeElement);
+            
+            messagesContainer.appendChild(exampleMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+
+
+        function receivedMessage(mensagemRecebida) {
+
+            const messagesContainer = document.getElementById('chatMessages');
+
+            // Mensagem de exemplo recebida
+            const exampleMessage = document.createElement('div');
+            exampleMessage.classList.add('message', 'received');
+            exampleMessage.textContent = mensagemRecebida;
+
+            // Adiciona a hora da mensagem
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('message-time');
+            timeElement.textContent = time;
+            exampleMessage.appendChild(timeElement);
+
+            // Adiciona a mensagem ao contêiner de mensagens
+            messagesContainer.appendChild(exampleMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        }
+    </script>
+
+
+    <!--
+    -->
+    <div id="log"></div>
+    <button onclick="connect()">Connect</button>
+    <button onclick="publish()">Publish</button>
+
+    <script>
+        var client;
+        var topicoPraReceber = "test/topicoQueNiguemPensou"
+        var topicoPraEnviar = "test/topicoQueNiguemPensou"
+        var logDiv = document.getElementById('log');
+
+        function log(message) {
+            //logDiv.innerHTML += message + '<br>';
+            //logDiv.innerHTML += message + '<br>';
+            //receivedMessage(message)
+        }
+
+        var clientId = 'cliente_unico_' + Math.random().toString(36).substr(2, 9);
+        var myId = clientId
+
+        function connect() {
+            //var clientId = 'client_' + Math.random().toString(16).substr(2, 8);
+
+            client = new Paho.MQTT.Client('mqtt-dashboard.com', 8884, clientId);
+            
+            client.onConnectionLost = function(responseObject) {
+                if (responseObject.errorCode !== 0) {
+                    log('Connection lost: ' + responseObject.errorMessage);
+                }
+            };
+
+            client.onMessageArrived = function(message) {
+                //log('Received message: ' + message.payloadString);
+                log(message.payloadString);
+
+                //const messageText = message.toString();
+                var messageText = message.payloadString;
+                if (!messageText.startsWith(myId)) {
+                    console.log('Mensagem recebida:', messageText);
+                    receivedMessage(messageText)
+                }
+            };
+
+            var options = {
+                useSSL: true,  // Use SSL for secure connection
+                onSuccess: onConnect,
+                onFailure: onFailure
+            };
+
+            client.connect(options);
+        }
+
+
+        function onConnect() {
+            log('Connected to MQTT broker');
+            // Subscribe to a topic
+            //client.subscribe('test/topic');
+            client.subscribe(topicoPraReceber);
+        }
+
+        function onFailure(message) {
+            log('Connection failed: ' + message.errorMessage);
+        }
+
+        function publish(txtPraEnviar) {
+            if (client.isConnected()) {
+                //var message = new Paho.MQTT.Message('Hello, MQTT!');
+                var message = new Paho.MQTT.Message(`${myId}: ${txtPraEnviar}`);
+                message.destinationName = topicoPraEnviar;
+                client.send(message);
+            } else {
+                log('Not connected to MQTT broker');
+            }
+        }
+    </script>
+
+
+</body>
+</html>
