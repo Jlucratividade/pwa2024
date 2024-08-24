@@ -1,40 +1,40 @@
 {
-    "short_name": "shorName PWA",
-    "name": "nomeMesmo do PWA",
-    "id": "/pwa2024/",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "theme_color": "#ffffff",
-    "background_color": "#000000",
-    "description": "my site description",
-    "icons": [
-      {
+  "short_name": "shorName PWA",
+  "name": "nomeMesmo do PWA",
+  "id": "/pwa2024/",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#000000",
+  "description": "my site description",
+  "icons": [
+    {
       "src": "icon-512-512.png",
       "type": "image/png",
       "sizes": "512x512"
-      },
-      {
+    },
+    {
       "src": "icon-192-192.png",
       "type": "image/png",
       "sizes": "192x192"
-      },
-      {
+    },
+    {
       "src": "icon-180-180.png",
       "type": "image/png",
       "sizes": "180x180"
-      },
-      {
+    },
+    {
       "src": "icon-167-167.png",
       "type": "image/png",
       "sizes": "167x167"
-      },
-      {
+    },
+    {
       "src": "icon-152-152.png",
       "type": "image/png",
       "sizes": "152x152"
-      }
-    ],
-    "screenshots": [
+    }
+  ],
+  "screenshots": [
     {
       "src": "screenshot-wide.png",
       "sizes": "1280x720",
@@ -47,5 +47,51 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
+  ],
+  "dir": "ltr",
+  "lang": "pt",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.exemplo.app",
+      "id": "id1234567890"
+    },
+    {
+      "platform": "play",
+      "url": "https://apps.apple.com/app/id1234567890",
+      "id": "id498616546"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Configurações",
+      "url": "/settings",
+      "description": "Acesse as configurações do aplicativo rapidamente."
+    },
+    {
+      "name": "Enviar Feedback",
+      "url": "/feedback",
+      "description": "Envie feedback diretamente do aplicativo."
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "share_target": {
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": []
+    },
+    "action": "/share"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "webmyapp",
+      "url": "handle-protocol?url=%s"
+    }
   ]
-  }
+}
