@@ -6,7 +6,7 @@ self.addEventListener('install', function(event){
         caches.open(cacheName).then(function (cache){
             return cache.addAll([
                 './',
-                './manifest.webmanifest',
+                './manifest.json',
                 './index.js',
                 './nossoChat.html'
             ]);
