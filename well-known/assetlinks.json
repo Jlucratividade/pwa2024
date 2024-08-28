@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.github.jlucratividade.twa",
-        "sha256_cert_fingerprints": ["B7:5F:67:35:EA:BF:63:A3:E8:16:DC:AF:B9:AC:8C:29:55:EA:89:1E:3B:9F:8D:97:1F:28:26:88:B4:A5:09:E1"]
+        "sha256_cert_fingerprints": ["96:BE:0F:29:94:D4:DE:64:F2:BE:3E:9E:D1:D1:3C:A5:F3:3C:74:E5:B9:53:8C:7A:93:7B:81:85:D3:C2:FE:F2"]
       }
     }]
